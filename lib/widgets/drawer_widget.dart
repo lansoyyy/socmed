@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:socmed/screens/home_screen.dart';
+import 'package:socmed/screens/login_screen.dart';
 import 'package:socmed/widgets/text_widget.dart';
 
 import '../utils/colors.dart';
@@ -11,6 +14,7 @@ class DrawerWidget extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<DrawerWidget> {
+  final box = GetStorage();
   // final Stream<DocumentSnapshot> userData =
   //     FirebaseFirestore.instance.collection('Users').doc(userId).snapshots();
   @override
@@ -25,10 +29,10 @@ class _MyDrawerState extends State<DrawerWidget> {
               decoration: BoxDecoration(
                 color: primary,
               ),
-              accountEmail:
-                  TextWidget(text: '', fontSize: 12, color: Colors.white),
+              accountEmail: TextWidget(
+                  text: box.read('email'), fontSize: 12, color: Colors.white),
               accountName: TextWidget(
-                text: '',
+                text: box.read('name'),
                 fontSize: 14,
                 color: Colors.white,
               ),
@@ -48,8 +52,8 @@ class _MyDrawerState extends State<DrawerWidget> {
                 color: Colors.black,
               ),
               onTap: () {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (context) => const MainHomeScreen()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const HomeScreen()));
               },
             ),
             ListTile(
@@ -72,6 +76,22 @@ class _MyDrawerState extends State<DrawerWidget> {
               onTap: () {
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                 //     builder: (context) => const MainHomeScreen()));
+              },
+            ),
+            ListTile(
+              title: TextWidget(
+                text: 'About App',
+                fontSize: 12,
+                color: Colors.black,
+              ),
+              onTap: () {
+                showAboutDialog(
+                    context: context,
+                    applicationName: 'SocMed',
+                    applicationIcon: const Icon(
+                      Icons.facebook,
+                    ),
+                    applicationVersion: 'v1.0.0');
               },
             ),
             ListTile(
@@ -106,10 +126,10 @@ class _MyDrawerState extends State<DrawerWidget> {
                             ),
                             MaterialButton(
                               onPressed: () async {
-                                // Navigator.of(context).pushReplacement(
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             const LoginScreen()));
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LoginScreen()));
                               },
                               child: const Text(
                                 'Continue',

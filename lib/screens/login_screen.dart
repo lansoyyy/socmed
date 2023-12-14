@@ -61,7 +61,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   if (emailController.text != box.read('email') ||
                       passwordController.text != box.read('password')) {
-                    print(box.read('email'));
                     showToast('Invalid account! Please try again');
                   } else {
                     showToast('Logged in succesfully!');

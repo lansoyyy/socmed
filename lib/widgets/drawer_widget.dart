@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:socmed/screens/aboutus_screen.dart';
+import 'package:socmed/screens/contactus_screen.dart';
 import 'package:socmed/screens/home_screen.dart';
 import 'package:socmed/screens/login_screen.dart';
 import 'package:socmed/widgets/text_widget.dart';
@@ -63,8 +65,8 @@ class _MyDrawerState extends State<DrawerWidget> {
                 color: Colors.black,
               ),
               onTap: () {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (context) => const MainHomeScreen()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const AboutusScreen()));
               },
             ),
             ListTile(
@@ -74,8 +76,8 @@ class _MyDrawerState extends State<DrawerWidget> {
                 color: Colors.black,
               ),
               onTap: () {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (context) => const MainHomeScreen()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const ContactusScreen()));
               },
             ),
             ListTile(
